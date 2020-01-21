@@ -14,12 +14,9 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        
-<link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
-
-          <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Shoplify</title>
@@ -48,8 +45,22 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
                 left: 50%;
                 transform: translate(-50%, -50%);
                 color: white;
-}
-
+            }
+            .columns {
+                padding : 80px 150px;
+            }
+            .card:hover{
+                transform: scale(1.10);
+                transition: 1s;
+            }
+            .etiquette{
+                background-color: red;
+                color:white;
+                width: 40%;
+                position: relative;
+                z-index :2;
+            }
+           
     
         </style>
     </head>
@@ -153,156 +164,57 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
                 </div>      
             </div>
         </section>
-        
-        
-        <section class="hero is-fullwidth" style='padding-top : 100px;'>
-            
-                <div class='container has-text-centered'>
+         <sql:query var="products" dataSource="${dataSource}">
+            select* from produit;
+        </sql:query>
+        <section  class="hero is-fullwidth display-on-scroll scroll-n-2" style='padding-top : 50px; background-color:   #d9f2d9'>
+            <div class='content'>
+                 <div class=' has-text-centered'>
                     <h1 class='title is-2'>Our Products</h1>
                     <h1 class='subtitle is-6'> Don't panic, it's organic !</h1>
                 <div class="columns is-multiline">
-                    <div class="column is-3">
-                              <div class="card">
+                    <c:forEach var = "row" items = "${products.rows}">
+                        <div class="column is-3"  style='padding : 10px 20px '>
+                            <div class="card" style='height:100%'>
+                                <c:if test="${row.qts==0}">  
+                                    <p class="etiquette">Sold out <p>  
+                                </c:if>  
                                 <div class="card-image">
-                                    <figure class="image is-square">
-                                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                                    <figure class="image ">
+                                        <img src="<c:out value="${row.photo}" />">
                                     </figure>
                                 </div>
                                 <div class="card-content"> 
                                     <div class="content">
                                         <h1 class="title is-5">
-                                            Nom du produit
+                                            <c:out value="${row.libelle}" />
                                         </h1>
-                                        <button class="button"   style="color:white; background-color:#ff7733;"  >
-                                            Buy 
-                                        </button>
+                                        <h1 class='subtitle is-6'>
+                                            <c:out value="${row.prix}" />
+                                        </h1>
+                                        <c:choose>
+                                            <c:when test="${row.qts!=0}">
+                                                <button class="button"   style="color:white; background-color:#ff7733;"  >
+                                                    Buy 
+                                                </button> 
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button class="button"  disabled style="color:white; background-color:#ff7733;"  >
+                                                    Buy 
+                                                </button> 
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <c:if test="${row.qts!=0}">  
+                                            
+                                        </c:if>
+                                        
                                     </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                     <div class="column is-3">
-                        <div class="card">
-                          <div class="card-image">
-                              <figure class="image is-square">
-                              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                              </figure>
-                          </div>
-                          <div class="card-content"> 
-                              <div class="content">
-                                  <h1 class="title is-5">
-                                      Nom du produit
-                                  </h1>
-                                  <button class="button"   style="color:white; background-color:#ff7733;"  >
-                                      Buy 
-                                  </button>
                               </div>
                           </div>
                       </div>
-                    </div>
-                    
-                     <div class="column is-3">
-                        <div class="card">
-                          <div class="card-image">
-                              <figure class="image is-square">
-                              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                              </figure>
-                          </div>
-                          <div class="card-content"> 
-                              <div class="content">
-                                  <h1 class="title is-5">
-                                      Nom du produit
-                                  </h1>
-                                  <button class="button"   style="color:white; background-color:#ff7733;"  >
-                                      Buy 
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                    
-                     <div class="column is-3">
-                        <div class="card">
-                          <div class="card-image">
-                              <figure class="image is-square">
-                              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                              </figure>
-                          </div>
-                          <div class="card-content"> 
-                              <div class="content">
-                                  <h1 class="title is-5">
-                                      Nom du produit
-                                  </h1>
-                                  <button class="button"   style="color:white; background-color:#ff7733;"  >
-                                      Buy 
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                    
-                     <div class="column is-3">
-                        <div class="card">
-                          <div class="card-image">
-                              <figure class="image is-square">
-                              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                              </figure>
-                          </div>
-                          <div class="card-content"> 
-                              <div class="content">
-                                  <h1 class="title is-5">
-                                      Nom du produit
-                                  </h1>
-                                  <button class="button"   style="color:white; background-color:#ff7733;"  >
-                                      Buy 
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                    
-                     <div class="column is-3">
-                        <div class="card">
-                          <div class="card-image">
-                              <figure class="image is-square">
-                              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                              </figure>
-                          </div>
-                          <div class="card-content"> 
-                              <div class="content">
-                                  <h1 class="title is-5">
-                                      Nom du produit
-                                  </h1>
-                                  <button class="button"   style="color:white; background-color:#ff7733;"  >
-                                      Buy 
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                    
-                     <div class="column is-3">
-                        <div class="card">
-                          <div class="card-image">
-                              <figure class="image is-square">
-                              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                              </figure>
-                          </div>
-                          <div class="card-content"> 
-                              <div class="content">
-                                  <h1 class="title is-5">
-                                      Nom du produit
-                                  </h1>
-                                  <button class="button"   style="color:white; background-color:#ff7733;"  >
-                                      Buy 
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
+                    </c:forEach>  
                 </div>
-               
-                         <div style="padding-top: 10%;" class="modal" id='ModalToOpen' >
+                <div style="padding-top: 10%;" class="modal" id='ModalToOpen' >
                     <div class="modal-background"></div>
                     <div class="modal-card">
                       <header class="modal-card-head">
@@ -335,6 +247,7 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
 
                 </div>
 
+            </div>
         </section>
         <script src="js/main.js"></script>
         <script src='js/animation.js'></script>

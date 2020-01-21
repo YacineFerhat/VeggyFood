@@ -6,11 +6,11 @@ $(document).ready(function()
     {
         for(let i = 1; i <= $(".display-on-scroll").length; i++)
         {
-            if($(window).scrollTop() >= $(".scroll-n-"+i).offset().top-500)
+            if($(window).scrollTop() >= $(".scroll-n-"+i).offset().top-650)
             {
                 if(!$(".scroll-n-"+i+" .content").is(":visible"))
                 {
-                    $(".scroll-n-"+i+" .content").fadeIn(1500);
+                    $(".scroll-n-"+i+" .content").fadeIn(3500);
                 }
             }
         }
