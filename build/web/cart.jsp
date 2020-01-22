@@ -23,13 +23,18 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <script src="https://kit.fontawesome.com/773695578b.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <style>
+         nav {
+                margin : 0px 60px;
+            }
+    </style>
     </head>
     <body>
         <section>
             <div class="hero-head">
                 <nav class="navbar " role="navigation" aria-label="main navigation">
                     <div class="navbar-brand">
-                        <a href="" class="navbar-item"><h1 class="title is-5 has-text-success has-text-weight-bold">Veggy Food</h1></a>
+                        <a href="HomePage.jsp"  class="navbar-item"><h1 class="title is-5 has-text-success has-text-weight-bold">Veggy Food</h1></a>
                         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -39,7 +44,7 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a href="/" class="button is-primary" >
+                            <a href="HomePage.jsp" class="button is-primary" >
                             <strong>Go Back!</strong>
                         </a>
                         </div>
