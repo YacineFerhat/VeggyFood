@@ -51,7 +51,6 @@ public class AjouterPanier extends HttpServlet {
                 ps.setString(1, id);
                 ResultSet rs =ps.executeQuery();
                 st = rs.next();
-                
                 PreparedStatement ps2 =conn.prepareStatement("select * from panier where id_produit=? ");
                 ps2.setString(1, id);
                 ResultSet rs2 =ps2.executeQuery();
