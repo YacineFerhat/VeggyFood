@@ -61,10 +61,51 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
                 z-index :2;
             }
            
-    
+            .Cart{
+                position: fixed;
+                top: 30%;
+                right: 2%;
+                width:50px;
+                height: 50px;
+                border-radius: 100%;
+                background-color: white;
+            }
+            .img-container{
+                position: relative;
+                top : 20%;
+                left: 15%;
+                width:30px;
+                height: 30px;
+            }
+            .qte{
+                position: absolute;
+                top: -20px;
+                background-color: red;
+                border-radius: 100%;
+                color: white;
+                width: 20px;
+                text-align: center;
+                left:20px;
+            }
         </style>
     </head>
     <body>
+        
+        <sql:query var="carts" dataSource="${dataSource}">
+            select sum(qte) from Cart;
+        </sql:query>
+        <div class="Cart">
+             <a href='cart.jsp'>
+            <div class='img-container'>
+                <span class='qte'>
+                   
+                        15
+                </span>
+                <img src='images/cart.png'>
+            </div>
+                                     </a>
+
+        </div>
         <section class="hero  is-fullwidth">
             <div class="hero-head">
                 <nav class="navbar " role="navigation" aria-label="main navigation">
@@ -174,7 +215,7 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
                     <h1 class='subtitle is-6'> Don't panic, it's organic !</h1>
                 <div class="columns is-multiline">
                     <c:forEach var = "row" items = "${products.rows}">
-                        <div class="column is-3"  style='padding : 10px 20px '>
+                        <div class="column is-3"  style='padding : 10px 20px ; '>
                             <div class="card" style='height:100%'>
                                 <c:if test="${row.qts==0}">  
                                     <p class="etiquette">Sold out <p>  
@@ -194,9 +235,11 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
                                         </h1>
                                         <c:choose>
                                             <c:when test="${row.qts!=0}">
-                                                <button class="button"   style="color:white; background-color:#ff7733;"  >
-                                                    Buy 
-                                                </button> 
+                                                    <button class="button"   style="color:white; background-color:#ff7733;"  >
+                                                        <a href='AjouterPanier?id=<c:out value="${row.id}"/>'>
+                                                            Buy
+                                                        </a>
+                                                    </button> 
                                             </c:when>
                                             <c:otherwise>
                                                 <button class="button"  disabled style="color:white; background-color:#ff7733;"  >
@@ -205,9 +248,7 @@ url="jdbc:mysql://localhost:3306/gestventes" user="root" password="" />
                                             </c:otherwise>
                                         </c:choose>
                                         <c:if test="${row.qts!=0}">  
-                                            
                                         </c:if>
-                                        
                                     </div>
                               </div>
                           </div>

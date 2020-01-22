@@ -12,6 +12,10 @@
         <servlet-name>InsertProduct</servlet-name>
         <servlet-class>InsertProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AjouterPanier</servlet-name>
+        <servlet-class>AjouterPanier</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Authentification</servlet-name>
         <url-pattern>/Authentification</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>InsertProduct</servlet-name>
         <url-pattern>/InsertProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjouterPanier</servlet-name>
+        <url-pattern>/AjouterPanier</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
